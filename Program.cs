@@ -2,8 +2,12 @@
 
 Console.Clear();
 
-string[] country = { "England", "Spain", "Italy", "Russia" };
+// string[] country = { "England", "Spain", "Italy", "Russia" };
 // string[] country = { "England", "Spain"};
+
+Console.WriteLine("Введите элементы массива через пробел.");
+System.Console.WriteLine("Например: 123 sds :) 1!2A");
+string[] country = Console.ReadLine().Split(' ');
 
 int lenght = country.Length;
 
