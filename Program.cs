@@ -1,44 +1,33 @@
-﻿// Удаление элемента из массива по индексу
+﻿// Формирование нового массива - Итоговая проверочная работа.
 
 Console.Clear();
 
 // string[] country = { "England", "Spain", "Italy", "Russia" };
-// string[] country = { "England", "Spain"};
 
+//Ввод с клавиатуры
 Console.WriteLine("Введите элементы массива через пробел.");
 System.Console.WriteLine("Например: 123 sds :) 1!2A");
 string[] country = Console.ReadLine().Split(' ');
+System.Console.WriteLine($"\n");
 
-int lenght = country.Length;
-
-int count = 1;
-
-// do-while
-do
+// Формирование нового массива через удаление элементов из первоначального
+string[] DelElementsArray(string[] argument)
 {
-
-    System.Console.WriteLine($"Этап: {count}");
-
-    int quantity = new Random().Next(1, lenght + 1);
-    System.Console.WriteLine($"Количество шагов удаления: {quantity} \n");
-
-    for (int i = 0; i < quantity; i++)
+    do
     {
-        lenght = country.Length;
-        System.Console.WriteLine($"Шаг {i + 1}: Длинна массива после каждого удаления: {lenght}");
+        int quantity = new Random().Next(1, argument.Length + 1);
 
-        int delIndex = new Random().Next(0, lenght - 1);
-        System.Console.WriteLine($"Индекс удаляемого элемента: {delIndex} \n");
+        for (int i = 0; i < quantity; i++)
+        {
+            int delIndex = new Random().Next(0, argument.Length - 1);
+            int[] indexes = { delIndex };
+            argument = (from x in argument where !(from i in indexes select argument.ElementAt(i)).Contains(x) select x).ToArray();
+        }
+    } while (argument.Length > 3);
+    return argument;
+}
 
-        int[] indexes = { delIndex };
-        country = (from x in country where !(from i in indexes select country.ElementAt(i)).Contains(x) select x).ToArray();
-    }
-
-    System.Console.WriteLine($"Длина массива после удаления элементов: {country.Length} \n");
-
-    count++;
-
-} while (country.Length > 3);
+string[] NewArr = DelElementsArray(country);
 
 // Печать массива
 void MethodPrintArray(string[] argument)
@@ -47,16 +36,15 @@ void MethodPrintArray(string[] argument)
     {
         System.Console.Write($"{argument[i]} ");
     }
-    // System.Console.WriteLine();
 }
 
-if (country.Length == 0)
+if (NewArr.Length == 0)
 {
-    System.Console.WriteLine($"Элементов в массиве не осталось \n");
+    System.Console.WriteLine($"В новом массиве 0 элементов. \n");
 }
 else
 {
-    System.Console.Write($"Оставшиеся элементы массива: ");
-    MethodPrintArray(country);
-    System.Console.WriteLine($" \n ");
+    System.Console.Write($"Новый массив: ");
+    MethodPrintArray(NewArr);
+    System.Console.WriteLine($"\n");
 }
