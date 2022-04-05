@@ -2,15 +2,16 @@
 
 Console.Clear();
 
+// Быстрая проверка кода.
 // string[] country = { "England", "Spain", "Italy", "Russia" };
 
-//Ввод с клавиатуры
+// Ввод с клавиатуры.
 Console.WriteLine("Введите элементы массива через пробел.");
 System.Console.WriteLine("Например: 123 sds :) 1!2A");
 string[] country = Console.ReadLine().Split(' ');
 System.Console.WriteLine($"\n");
 
-// Формирование нового массива через удаление элементов из первоначального
+// Формирование нового массива через удаление элементов из первоначального.
 string[] DelElementsArray(string[] argument)
 {
     do
@@ -29,7 +30,7 @@ string[] DelElementsArray(string[] argument)
 
 string[] NewArr = DelElementsArray(country);
 
-// Печать массива
+// Печать массива.
 void MethodPrintArray(string[] argument)
 {
     for (int i = 0; i < argument.Length; i++)
