@@ -8,19 +8,19 @@ Console.Clear();
 // Ввод с клавиатуры.
 Console.WriteLine("Введите элементы массива через пробел.");
 System.Console.WriteLine("Например: 123 sds :) 1!2A");
-string[] country = Console.ReadLine().Split(' ');
+string[] arrEnter = Console.ReadLine().Split(' ');
 System.Console.WriteLine($"\n");
 
 // Формирование нового массива через удаление элементов из первоначального.
 string[] DelElementsArray(string[] argument)
 {
     do
-    {
-        int quantity = new Random().Next(1, argument.Length + 1);
+    {        
+        int quantity = new Random().Next(0, argument.Length + 1); // Количество удаляемых элементов
 
         for (int i = 0; i < quantity; i++)
         {
-            int delIndex = new Random().Next(0, argument.Length - 1);
+            int delIndex = new Random().Next(0, argument.Length);
             int[] indexes = { delIndex };
             argument = (from x in argument where !(from i in indexes select argument.ElementAt(i)).Contains(x) select x).ToArray();
         }
@@ -28,7 +28,7 @@ string[] DelElementsArray(string[] argument)
     return argument;
 }
 
-string[] NewArr = DelElementsArray(country);
+string[] NewArr = DelElementsArray(arrEnter);
 
 // Печать массива.
 void MethodPrintArray(string[] argument)
